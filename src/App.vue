@@ -35,6 +35,8 @@
 <script>
 export default {
   data() {
+    const base = import.meta.env.BASE_URL
+
     return {
       // 24 cases
       grid: Array(24).fill(null),
@@ -42,26 +44,37 @@ export default {
       // case sélectionnée
       activeCell: null,
 
-      // tes 12 images
+      // 12 images
       images: [
-        "/Blop_1.webp","/Blop_2.jpeg","/Blop_3.webp","/Blop_4.jpeg",
-        "/Blop_5.jpeg","/Blop_6.webp","/Blop_7.jpeg","/Blop_8.jpeg",
-        "/Blop_9.webp","/Blop_10.png","/Blop_11.webp","/Blop_12.webp"
+        base + "Blop_1.webp",
+        base + "Blop_2.jpeg",
+        base + "Blop_3.webp",
+        base + "Blop_4.jpeg",
+        base + "Blop_5.jpeg",
+        base + "Blop_6.webp",
+        base + "Blop_7.jpeg",
+        base + "Blop_8.jpeg",
+        base + "Blop_9.webp",
+        base + "Blop_10.png",
+        base + "Blop_11.webp",
+        base + "Blop_12.webp"
       ]
-    };
+    }
   },
 
   methods: {
     selectCell(index) {
-      this.activeCell = index;
+      this.activeCell = index
     },
 
     setImage(img) {
-      this.grid[this.activeCell] = img;
-      this.activeCell = null;
+      if (this.activeCell === null) return
+
+      this.grid[this.activeCell] = img
+      this.activeCell = null
     }
   }
-};
+}
 </script>
 
 <style>
